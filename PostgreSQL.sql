@@ -1,51 +1,54 @@
-DROP DATABASE IF EXISTS productsdb;
-CREATE DATABASE productsdb;
+DROP DATABASE IF EXISTS products_database;
+CREATE DATABASE products_database;
 
-USE productsdb;
+DROP TABLE IF EXISTS products;
+DROP TABLE IF EXISTS relateditems;
+DROP TABLE IF EXISTS product;
+DROP TABLE IF EXISTS styles;
+DROP TABLE IF EXISTS photos;
+DROP TABLE IF EXISTS inventory;
 
 CREATE TABLE products (
-  product_id int PRIMARY KEY
-)
+  product_id INT PRIMARY KEY NOT NULL
+);
 
 CREATE TABLE relateditems (
-  product_id int AUTO_INCREMENT PRIMARY KEY,
-  related_ids array,
+  product_id SERIAL PRIMARY KEY NOT NULL,
+  related_ids INT NOT NULL,
     FOREIGN KEY (product_id) REFERENCES products (product_id)
-)
+);
 
 CREATE TABLE product (
-  product_id int AUTO_INCREMENT PRIMARY KEY,
-  item_name varchar(30),
-  slogan varchar(100),
-  description text,
-  category varchar(20),
-  default_price int,
-  features array,
+  product_id SERIAL PRIMARY KEY NOT NULL,
+  item_name VARCHAR(30) NOT NULL,
+  slogan VARCHAR(100) NOT NULL,
+  product_description TEXT NOT NULL,
+  category VARCHAR(20) NOT NULL,
+  default_price INT NOT NULL,
+  features VARCHAR(50)[] NOT NULL,
     FOREIGN KEY (product_id) REFERENCES products (product_id)
-
-)
+);
 
 CREATE TABLE styles (
-  product_id int AUTO_INCREMENT PRIMARY KEY,
-  style_id int,
-  style_name varchar(10),
-  sale_prce int,
-  photo_id int AUTO_INCREMENT,
-  sku_id int,
-    FOREIGN KEY (product_id) REFERENCES products (product_id)
-
-)
+  id SERIAL PRIMARY KEY NOT NULL,
+  product_id INT NOT NULL,
+  style_id INT NOT NULL,
+  style_name VARCHAR(10),
+  sale_price INT NOT NULL,
+  FOREIGN KEY (product_id) REFERENCES products (product_id)
+);
 
 CREATE TABLE photos (
-  photo_id int AUTO_INCREMENT PRIMARY KEY,
-  url varchar(200),
-  thumbnail varchar(200),
-    FOREIGN KEY (photo_id) REFERENCES styles (photo_id)
-)
+  photo_id SERIAL PRIMARY KEY NOT NULL,
+  pic_url VARCHAR(200) NOT NULL,
+  thumbnail VARCHAR(200) NOT NULL,
+    FOREIGN KEY (photo_id) REFERENCES styles (id)
+);
 
 CREATE TABLE inventory (
-  sku_id int PRIMARY KEY,
-  quantity int,
-  size char(3),
-    FOREIGN KEY (sku_id) REFERENCES styles (sku_id)
-)
+  sku_id SERIAL PRIMARY KEY NOT NULL,
+  quantity INT NOT NULL,
+  size CHAR(3) NOT NULL,
+    FOREIGN KEY (sku_id) REFERENCES styles (id)
+);
+
