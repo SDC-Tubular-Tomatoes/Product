@@ -1,9 +1,9 @@
 const models = require('./model');
 
 module.exports = {
-  getProduct: (req, res) => {
-    res.send('Reached controller');
-  },
+  // getProduct: (req, res) => {
+  //   res.send('Reached controller');
+  // },
   // getStyle: (req, res) => {
   //   res.send('Reached controller');
   // },
