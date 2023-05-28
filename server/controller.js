@@ -5,24 +5,35 @@ module.exports = {
     models.getProducts()
       .then((response) => {
         res.send(response);
+      })
+      .catch((err) => {
+        console.log('Unable to get products: ', err);
+        res.sendStatus(500);
       });
   },
   getProduct: (req, res) => {
     models.getProduct(req.params.product_id)
       .then((response) => {
         res.send(response);
+      })
+      .catch((err) => {
+        console.log('Unable to get product: ', err);
+        res.sendStatus(500);
       });
-    // console.log('request: ', req);
   },
   // getStyle: (req, res) => {
   //   res.send('Reached controller');
   // },
-  // getPhotos: (req, res) => {
-  //   res.send('Reached controller');
-  // },
-  // getFeatures: (req, res) => {
-  //   res.send('Reached controller');
-  // },
+  getProductRelated: (req, res) => {
+    models.getProductRelated(req.params.product_id)
+      .then((response) => {
+        res.send(response);
+      })
+      .catch((err) => {
+        console.log('Unable to get related product ids: ', err);
+        res.sendStatus(500);
+      });
+  },
   // getInventory: (req, res) => {
   //   res.send('Reached controller');
   // },
