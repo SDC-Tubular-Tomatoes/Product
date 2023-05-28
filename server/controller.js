@@ -21,9 +21,16 @@ module.exports = {
         res.sendStatus(500);
       });
   },
-  // getStyle: (req, res) => {
-  //   res.send('Reached controller');
-  // },
+  getStyle: (req, res) => {
+    models.getProductStyle(req.params.product_id)
+      .then((response) => {
+        res.send(response);
+      })
+      .catch((err) => {
+        console.log('Unable to get product: ', err);
+        res.sendStatus(500);
+      });
+  },
   getProductRelated: (req, res) => {
     models.getProductRelated(req.params.product_id)
       .then((response) => {
