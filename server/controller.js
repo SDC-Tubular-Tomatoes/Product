@@ -1,6 +1,12 @@
 const models = require('./model');
 
 module.exports = {
+  getProducts: (req, res) => {
+    models.getProducts()
+      .then((response) => {
+        res.send(response);
+      });
+  },
   getProduct: (req, res) => {
     models.getProduct(req.params.product_id)
       .then((response) => {
