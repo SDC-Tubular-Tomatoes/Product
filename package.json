@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx nodemon --watch server ./server/index.js"
+    "start": "npx nodemon --watch server ./server/index.js",
+    "import-csv": "psql -d products_database -U ray -h localhost -p 5432 -f importCSV.sql",
+    "database": "psql -d products_database -U ray -h localhost -p 5432 -f PostgreSQL.sql"
   },
   "repository": {
     "type": "git",
