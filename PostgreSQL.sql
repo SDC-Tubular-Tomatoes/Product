@@ -8,17 +8,6 @@ DROP TABLE IF EXISTS relateditems;
 DROP TABLE IF EXISTS styles;
 DROP TABLE IF EXISTS product;
 
-CREATE INDEX idx_product_product_id ON product (product_id);
-
-CREATE INDEX idx_relateditems_product_id ON relateditems (product_id);
-
-CREATE INDEX idx_features_product_id ON features (product_id);
-
-CREATE INDEX idx_styles_product_id ON styles (product_id);
-
-CREATE INDEX idx_photos_style_id ON photos (style_id);
-
-CREATE INDEX idx_iventory_style_id ON inventory (style_id);
 
 CREATE TABLE product (
   product_id SERIAL PRIMARY KEY NOT NULL,
@@ -70,7 +59,17 @@ CREATE TABLE inventory (
     FOREIGN KEY (style_id) REFERENCES styles (id)
 );
 
+CREATE INDEX idx_product_product_id ON product (product_id);
 
+CREATE INDEX idx_relateditems_product_id ON relateditems (product_id);
+
+CREATE INDEX idx_features_product_id ON features (product_id);
+
+CREATE INDEX idx_styles_product_id ON styles (product_id);
+
+CREATE INDEX idx_photos_style_id ON photos (style_id);
+
+CREATE INDEX idx_iventory_style_id ON inventory (style_id);
 
 /***                                CSV COMMANDS                               ***/
 
