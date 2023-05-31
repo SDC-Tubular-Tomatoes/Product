@@ -8,7 +8,10 @@
     "start": "npx nodemon --watch server ./server/index.js",
     "import-csv": "psql -d products_database -U ray -h localhost -p 5432 -f importCSV.sql",
     "database": "psql -d products_database -U ray -h localhost -p 5432 -f PostgreSQL.sql",
-    "k6_products": "k6 run k6_product.js"
+    "k6_products": "k6 run k6_products.js",
+    "k6_product": "k6 run k6_product.js",
+    "k6_productStyles": "k6 run k6_productStyles.js",
+    "k6_productRelated": "k6 run k6_productRelated.js"
   },
   "repository": {
     "type": "git",

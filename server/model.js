@@ -1,7 +1,7 @@
 const { db } = require('./db');
 
 module.exports = {
-  getProducts: () => db.query('SELECT * FROM product LIMIT 5'),
+  getProducts: () => db.query('SELECT item_name, slogan, product_description, category, default_price FROM product LIMIT 5'),
 
   getProduct: (id) => {
     const query = `SELECT p.item_name, p.slogan, p.product_description,

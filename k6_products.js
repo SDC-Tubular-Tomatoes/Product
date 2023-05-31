@@ -1,5 +1,5 @@
 import http from 'k6/http';
-import { check } from 'k6';
+import { check, sleep } from 'k6';
 
 export const options = {
   stages: [
@@ -10,7 +10,8 @@ export const options = {
 };
 
 export default function () {
-  const randomProductId = Math.floor(900000 + Math.random() * 100000);
-  const res = http.get(`http://localhost:3000/api/products/${randomProductId}`);
+  // const randomProductId = Math.floor(900000 + Math.random() * 100000);
+  const res = http.get('http://localhost:3000/api/products');
   check(res, { 'status was 200': (r) => r.status == 200 });
+  // sleep(1);
 }

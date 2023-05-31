@@ -11,6 +11,7 @@ export const options = {
 
 export default function () {
   const randomProductId = Math.floor(900000 + Math.random() * 100000);
-  const res = http.get(`http://localhost:3000/api/products/${randomProductId}`);
+  const res = http.get(`http://localhost:3000/api/products/${randomProductId}/related`);
   check(res, { 'status was 200': (r) => r.status == 200 });
 }
+
